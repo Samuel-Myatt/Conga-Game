@@ -25,6 +25,8 @@ public class GameHandler : MonoBehaviour
     bool foundone = false;
 
     public float score = 0;
+
+    public bool gameover = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +34,7 @@ public class GameHandler : MonoBehaviour
         Leader = GameObject.FindGameObjectWithTag("Leader");
        
         SpawnFollower(1);
-       
+        gameover = false;
     }
     
     public void SpawnFollower(int Col)
@@ -60,110 +62,118 @@ public class GameHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        test++; 
-        if(test == 360)
+        if(gameover)
 		{
-            //SpawnFollower();
-            test = 0;
-        }
 
-
-        if (Input.GetMouseButtonDown(0))
-		{
-            if(selected == QueueCount-1)
-			{
-                Queue[selected].GetComponent<Follow>().UnSelected();
-                selected = 0;
-			}
-            else
-			{
-                Queue[selected].GetComponent<Follow>().UnSelected();
-                selected++;
-            }
-            
 		}
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (selected == 0)
-            {
-                Queue[selected].GetComponent<Follow>().UnSelected();
-                selected = QueueCount-1;
-            }
-            else
-			{
-                Queue[selected].GetComponent<Follow>().UnSelected();
-                selected--;
-            }
-        }
-
-        if (Input.GetKeyDown("space"))
+        else
 		{
-            if (beenChosen)
+            test++;
+            if (test == 360)
             {
-                //selected colour to become chosens colour
-                //then the next in the line to become selecteds old colour
-                ///then just continue till the end
-                /*if(chosen < selected)
-				{
-                    //selected decrease
-                    int temp = Queue[selected].GetComponent<Follow>().Colour;
-                    Queue[selected].GetComponent<Follow>().Colour = Queue[chosen].GetComponent<Follow>().Colour;
-                    for (int i = 1; i < (selected - chosen); i++)
-                    {
-                        int temp2 = Queue[selected - i].GetComponent<Follow>().Colour;
-                        Queue[selected - i].GetComponent<Follow>().Colour = temp;
-                        temp = temp2;
-                    }
-                    //chosen = null;
-                    Queue[chosen].GetComponent<Follow>().UnSelected();
-                    beenChosen = false;
-                }
-				else if(chosen > selected)
-				{
-                    //selected increase
-                    int temp = Queue[selected].GetComponent<Follow>().Colour;
-                    Queue[selected].GetComponent<Follow>().Colour = Queue[chosen].GetComponent<Follow>().Colour;
-                    for (int i = 1; i < (chosen - selected); i++)
-					{
-                        int temp2 = Queue[selected + i].GetComponent<Follow>().Colour;
-                        Queue[selected + i].GetComponent<Follow>().Colour = temp;
-                        temp = temp2;
-                    }
-                    //chosen = null;
-                    Queue[chosen].GetComponent<Follow>().UnSelected();
-                    beenChosen = false;
+                //SpawnFollower();
+                test = 0;
+            }
+
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (selected == QueueCount - 1)
+                {
+                    Queue[selected].GetComponent<Follow>().UnSelected();
+                    selected = 0;
                 }
                 else
-				{
-                    //deselect
-                    //chosen = null;
-                    Queue[chosen].GetComponent<Follow>().UnSelected();
-                    beenChosen = false;
+                {
+                    Queue[selected].GetComponent<Follow>().UnSelected();
+                    selected++;
                 }
-                
-            }*/
-                int temp = Queue[selected].GetComponent<Follow>().Colour;
-                int temp2 = Queue[chosen].GetComponent<Follow>().Colour;
-                Queue[chosen].GetComponent<Follow>().Colour = temp;
-                Queue[selected].GetComponent<Follow>().Colour = temp2;
-                Queue[chosen].GetComponent<Follow>().UnSelected();
-                //Queue[selected].GetComponent<Follow>().UnSelected();
-                beenChosen = false;
+
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (selected == 0)
+                {
+                    Queue[selected].GetComponent<Follow>().UnSelected();
+                    selected = QueueCount - 1;
+                }
+                else
+                {
+                    Queue[selected].GetComponent<Follow>().UnSelected();
+                    selected--;
+                }
             }
 
-            else
+            if (Input.GetKeyDown("space"))
             {
-                chosen = selected;
-                beenChosen = true;
+                if (beenChosen)
+                {
+                    //selected colour to become chosens colour
+                    //then the next in the line to become selecteds old colour
+                    ///then just continue till the end
+                    /*if(chosen < selected)
+                    {
+                        //selected decrease
+                        int temp = Queue[selected].GetComponent<Follow>().Colour;
+                        Queue[selected].GetComponent<Follow>().Colour = Queue[chosen].GetComponent<Follow>().Colour;
+                        for (int i = 1; i < (selected - chosen); i++)
+                        {
+                            int temp2 = Queue[selected - i].GetComponent<Follow>().Colour;
+                            Queue[selected - i].GetComponent<Follow>().Colour = temp;
+                            temp = temp2;
+                        }
+                        //chosen = null;
+                        Queue[chosen].GetComponent<Follow>().UnSelected();
+                        beenChosen = false;
+                    }
+                    else if(chosen > selected)
+                    {
+                        //selected increase
+                        int temp = Queue[selected].GetComponent<Follow>().Colour;
+                        Queue[selected].GetComponent<Follow>().Colour = Queue[chosen].GetComponent<Follow>().Colour;
+                        for (int i = 1; i < (chosen - selected); i++)
+                        {
+                            int temp2 = Queue[selected + i].GetComponent<Follow>().Colour;
+                            Queue[selected + i].GetComponent<Follow>().Colour = temp;
+                            temp = temp2;
+                        }
+                        //chosen = null;
+                        Queue[chosen].GetComponent<Follow>().UnSelected();
+                        beenChosen = false;
+                    }
+                    else
+                    {
+                        //deselect
+                        //chosen = null;
+                        Queue[chosen].GetComponent<Follow>().UnSelected();
+                        beenChosen = false;
+                    }
+
+                }*/
+                    int temp = Queue[selected].GetComponent<Follow>().Colour;
+                    int temp2 = Queue[chosen].GetComponent<Follow>().Colour;
+                    Queue[chosen].GetComponent<Follow>().Colour = temp;
+                    Queue[selected].GetComponent<Follow>().Colour = temp2;
+                    Queue[chosen].GetComponent<Follow>().UnSelected();
+                    //Queue[selected].GetComponent<Follow>().UnSelected();
+                    beenChosen = false;
+                }
+
+                else
+                {
+                    chosen = selected;
+                    beenChosen = true;
+                }
+
             }
-            
-		}
-        if(beenChosen)
-		{
-            Queue[chosen].GetComponent<Follow>().Selected();
+            if (beenChosen)
+            {
+                Queue[chosen].GetComponent<Follow>().Selected();
+            }
+            Queue[selected].GetComponent<Follow>().Selected();
+            Check3();
         }
-        Queue[selected].GetComponent<Follow>().Selected();
-        Check3();
+        
     }
 
     void Check3()

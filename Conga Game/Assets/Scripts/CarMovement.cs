@@ -18,13 +18,16 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameHandler.GetComponent<GameHandler>().gameover == false)
+		{
+            Vector2 inputVec = Vector2.zero;
 
-        Vector2 inputVec = Vector2.zero;
+            inputVec.x = Input.GetAxis("Horizontal");
+            inputVec.y = Input.GetAxis("Vertical");
 
-        inputVec.x = Input.GetAxis("Horizontal");
-        inputVec.y = Input.GetAxis("Vertical");
-
-        controller.SetInputVec(inputVec);
+            controller.SetInputVec(inputVec);
+        }
+            
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -42,6 +45,7 @@ public class CarMovement : MonoBehaviour
         else if(other.tag == "Wall")
 		{
             Debug.Log("lose");
+            GameHandler.GetComponent<GameHandler>().gameover = true;
         }
     }
 

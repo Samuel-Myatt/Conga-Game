@@ -28,7 +28,7 @@ public class CarController : MonoBehaviour
     float maxSpeedStart;
     public bool currentlyplaying;
 
-
+    public GameObject GameHandler;
 
 
 
@@ -36,6 +36,7 @@ public class CarController : MonoBehaviour
     private void Awake()
     {
         carRb = GetComponent<Rigidbody2D>();
+        GameHandler = GameObject.FindGameObjectWithTag("GameHandler");
     }
     private void Start()
     {
@@ -44,10 +45,17 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
-
-        accInput = 1f;
-        accFactor = accFactorStart;
-        maxSpeed = maxSpeedStart;
+        if(GameHandler.GetComponent<GameHandler>().gameover == false)
+		{
+            accInput = 1f;
+            accFactor = accFactorStart;
+            maxSpeed = maxSpeedStart;
+        }
+        else
+		{
+            accInput = 0f;
+        }
+        
 
 
 
