@@ -101,7 +101,7 @@ public class Follow : MonoBehaviour
                 break;
             case 4:
                 sr.sprite = HighlightG;
-                anim.Play("Green");
+                anim.Play("GreenGlow");
                 break;
         }
     }
