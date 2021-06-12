@@ -27,7 +27,7 @@ public class Follow : MonoBehaviour
     public Sprite HighlightY;
     public Sprite HighlightG;
 
-
+    public Animator anim;
 
 
     void Awake()
@@ -45,15 +45,19 @@ public class Follow : MonoBehaviour
             case 1:
                 //be a colour
                 sr.sprite = Blue;
+                anim.Play("Blue");
                 break;  
             case 2:
                 sr.sprite = Yellow;
+                anim.Play("Yellow");
                 break;
             case 3:
                 sr.sprite = Red;
+                anim.Play("Red");
                 break;
             case 4:
                 sr.sprite = Green;
+                anim.Play("Green");
                 break;
         }
     }
@@ -85,15 +89,19 @@ public class Follow : MonoBehaviour
             case 1:
                 //be a colour
                 sr.sprite = HighlightB;
+                anim.Play("BlueGlow");
                 break;
             case 2:
                 sr.sprite = HighlightY;
+                anim.Play("YellowGlow");
                 break;
             case 3:
                 sr.sprite = HighlightR;
+                anim.Play("RedGlow");
                 break;
             case 4:
                 sr.sprite = HighlightG;
+                anim.Play("Green");
                 break;
         }
     }
@@ -104,15 +112,19 @@ public class Follow : MonoBehaviour
             case 1:
                 //be a colour
                 sr.sprite = Blue;
+                anim.Play("Blue");
                 break;
             case 2:
                 sr.sprite = Yellow;
+                anim.Play("Yellow");
                 break;
             case 3:
                 sr.sprite = Red;
+                anim.Play("Red");
                 break;
             case 4:
                 sr.sprite = Green;
+                anim.Play("Green");
                 break;
         }
     }

@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 9183459916689604839}
   - component: {fileID: 9183459916689604843}
   - component: {fileID: 9183459916689604842}
+  - component: {fileID: 3366938257740208736}
   m_Layer: 0
   m_Name: Follower
   m_TagString: Follower
@@ -194,6 +195,7 @@ MonoBehaviour:
   HighlightR: {fileID: 21300000, guid: 3f5e5b1ff34677c4e9c15bb6bb06bf73, type: 3}
   HighlightY: {fileID: 21300000, guid: 13a7019f004a0694cba60efd8f06adea, type: 3}
   HighlightG: {fileID: 21300000, guid: 80828d6b63f13e2428d9745ed54ccd81, type: 3}
+  anim: {fileID: 3366938257740208736}
 --- !u!58 &9183459916689604843
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -231,3 +233,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &3366938257740208736
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9183459916689604838}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a99d7a05ff773874bb244a7b64acde90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
