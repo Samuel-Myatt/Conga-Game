@@ -21,6 +21,8 @@ public class GameHandler : MonoBehaviour
     int chosen;
 
     bool beenChosen = false;
+
+    bool foundone = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -157,38 +159,68 @@ public class GameHandler : MonoBehaviour
 	{
         if(QueueCount > 3)
 		{
-            for(int i = 0; i < QueueCount-3; i++)
+            for(int i = 0; i < QueueCount; i++)
 			{
-                int tempcol = Queue[i].GetComponent<Follow>().Colour;
-                if(tempcol == Queue[i+1].GetComponent<Follow>().Colour)
-                {
-                    if (tempcol == Queue[i + 2].GetComponent<Follow>().Colour)
-					{
-                        //we have a match
-                        //remove the 3
-                        //move everyone past them up by 36
-                        for(int j = 0; j < QueueCount - i; j++)
-						{
-                            if(QueueCount - (i+j) >= 3)
-							{
-                                Queue[i + j].GetComponent<Follow>().Colour = Queue[i + j + 3].GetComponent<Follow>().Colour;
-                                Debug.Log("changin colours");
+                if(!foundone)
+				{
+                    int tempcol = Queue[i].GetComponent<Follow>().Colour;
+                    if (tempcol == Queue[i + 1].GetComponent<Follow>().Colour)
+                    {
+                        if (tempcol == Queue[i + 2].GetComponent<Follow>().Colour)
+                        {
+                            foundone = true;
+                            //we have a match
+                            //remove the 3
+                            //move everyone past them up by 36
+                            if (i == 0)
+                            {
+                                Queue[i + 3].GetComponent<Follow>().Target = Leader.transform;
+                                Destroy(Queue[i].gameObject);
+                                Queue.RemoveAt(i);
+                                Destroy(Queue[i].gameObject);
+                                Queue.RemoveAt(i);
+                                Destroy(Queue[i].gameObject);
+                                Queue.RemoveAt(i);
+                                QueueCount -= 3;
                             }
                             else
-							{
-                                // remove the queue[i+j]
-                                Destroy(Queue[i + j].gameObject);
-                                Queue.RemoveAt(i + j);
-                                Debug.Log("Deletin");
+                            {
+                                Queue[i + 3].GetComponent<Follow>().Target = Queue[i - 1].transform;
+                                Destroy(Queue[i].gameObject);
+                                Queue.RemoveAt(i);
+                                Destroy(Queue[i].gameObject);
+                                Queue.RemoveAt(i);
+                                Destroy(Queue[i].gameObject);
+                                Queue.RemoveAt(i);
+                                QueueCount -= 3;
 
                             }
-                            
-                        }
-					}
 
+                            /*for(int j = 0; j < QueueCount - i; j++)
+                            {
+                                if(QueueCount - (i+j) >= 3)
+                                {
+                                    Queue[i + j].GetComponent<Follow>().Colour = Queue[i + j + 3].GetComponent<Follow>().Colour;
+                                    Debug.Log("changin colours");
+                                }
+                                else
+                                {
+                                    // remove the queue[i+j]
+                                    Destroy(Queue[i + j].gameObject);
+                                    Queue.RemoveAt(i + j);
+                                    Debug.Log("Deletin");
+
+                                }
+
+                            }*/
+                        }
+
+                    }
                 }
+                
 
             }
+            foundone = false;
 		}
 	}
 }
