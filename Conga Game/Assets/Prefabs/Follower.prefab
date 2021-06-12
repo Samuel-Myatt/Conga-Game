@@ -190,7 +190,10 @@ MonoBehaviour:
   Yellow: {fileID: 21300000, guid: 03c9c2d2043881f498cd74fa69af934e, type: 3}
   Red: {fileID: 21300000, guid: 28e2f809c68b2a347bca37fd1fd4189c, type: 3}
   Green: {fileID: 21300000, guid: 461b1899d66428d48aabc35545bd4d39, type: 3}
-  Highlight: {fileID: 21300000, guid: 8b9dd05592782e94da48489c8be8f0db, type: 3}
+  HighlightB: {fileID: 21300000, guid: 8b9dd05592782e94da48489c8be8f0db, type: 3}
+  HighlightR: {fileID: 21300000, guid: 3f5e5b1ff34677c4e9c15bb6bb06bf73, type: 3}
+  HighlightY: {fileID: 21300000, guid: 13a7019f004a0694cba60efd8f06adea, type: 3}
+  HighlightG: {fileID: 21300000, guid: 80828d6b63f13e2428d9745ed54ccd81, type: 3}
 --- !u!58 &9183459916689604843
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -22,7 +22,10 @@ public class Follow : MonoBehaviour
     public Sprite Yellow;
     public Sprite Red;
     public Sprite Green;
-    public Sprite Highlight;
+    public Sprite HighlightB;
+    public Sprite HighlightR;
+    public Sprite HighlightY;
+    public Sprite HighlightG;
 
 
 
@@ -76,8 +79,24 @@ public class Follow : MonoBehaviour
 
     public void Selected()
 	{
-        sr.sprite = Highlight;
-	}
+        
+        switch (Colour)
+        {
+            case 1:
+                //be a colour
+                sr.sprite = HighlightB;
+                break;
+            case 2:
+                sr.sprite = HighlightY;
+                break;
+            case 3:
+                sr.sprite = HighlightR;
+                break;
+            case 4:
+                sr.sprite = HighlightG;
+                break;
+        }
+    }
     public void UnSelected()
     {
         switch (Colour)
