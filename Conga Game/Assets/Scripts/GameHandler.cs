@@ -23,6 +23,8 @@ public class GameHandler : MonoBehaviour
     bool beenChosen = false;
 
     bool foundone = false;
+
+    public float score = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -203,6 +205,7 @@ public class GameHandler : MonoBehaviour
                                 Destroy(Queue[i].gameObject);
                                 Queue.RemoveAt(i);
                                 QueueCount -= 3;
+                                score += 100;
                             }
                             else
                             {
@@ -225,6 +228,7 @@ public class GameHandler : MonoBehaviour
                                 Destroy(Queue[i].gameObject);
                                 Queue.RemoveAt(i);
                                 QueueCount -= 3;
+                                score += 100;
 
                             }
 
