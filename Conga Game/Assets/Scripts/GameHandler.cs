@@ -96,12 +96,12 @@ public class GameHandler : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
 		{
-            if(beenChosen)
-			{
+            if (beenChosen)
+            {
                 //selected colour to become chosens colour
                 //then the next in the line to become selecteds old colour
-                //then just continue till the end
-                if(chosen < selected)
+                ///then just continue till the end
+                /*if(chosen < selected)
 				{
                     //selected decrease
                     int temp = Queue[selected].GetComponent<Follow>().Colour;
@@ -139,8 +139,17 @@ public class GameHandler : MonoBehaviour
                     beenChosen = false;
                 }
                 
+            }*/
+                int temp = Queue[selected].GetComponent<Follow>().Colour;
+                int temp2 = Queue[chosen].GetComponent<Follow>().Colour;
+                Queue[chosen].GetComponent<Follow>().Colour = temp;
+                Queue[selected].GetComponent<Follow>().Colour = temp2;
+                Queue[chosen].GetComponent<Follow>().UnSelected();
+                //Queue[selected].GetComponent<Follow>().UnSelected();
+                beenChosen = false;
             }
-			else 
+
+            else
             {
                 chosen = selected;
                 beenChosen = true;
@@ -159,7 +168,7 @@ public class GameHandler : MonoBehaviour
 	{
         if(QueueCount > 3)
 		{
-            for(int i = 0; i < QueueCount; i++)
+            for(int i = 0; i < QueueCount-2; i++)
 			{
                 if(!foundone)
 				{
@@ -169,12 +178,24 @@ public class GameHandler : MonoBehaviour
                         if (tempcol == Queue[i + 2].GetComponent<Follow>().Colour)
                         {
                             foundone = true;
+                            Debug.Log("Found 3");
                             //we have a match
                             //remove the 3
                             //move everyone past them up by 36
                             if (i == 0)
                             {
-                                Queue[i + 3].GetComponent<Follow>().Target = Leader.transform;
+                                Debug.Log("Hit the win");
+                                if ((QueueCount - i) < 3)
+                                {
+                                    Debug.Log("Yeet");
+                                }
+                                else
+                                {
+                                    Debug.Log("Space");
+                                    Queue[i + 3].GetComponent<Follow>().Target = Leader.transform;
+                                    
+                                }
+
                                 Destroy(Queue[i].gameObject);
                                 Queue.RemoveAt(i);
                                 Destroy(Queue[i].gameObject);
@@ -185,7 +206,18 @@ public class GameHandler : MonoBehaviour
                             }
                             else
                             {
-                                Queue[i + 3].GetComponent<Follow>().Target = Queue[i - 1].transform;
+                                Debug.Log("Hit the win");
+                                if ((QueueCount - i) <= 3)
+                                {
+                                    Debug.Log("Yeet");
+                                }
+                                else
+                                {
+                                    Debug.Log("Space");
+                                    Queue[i + 3].GetComponent<Follow>().Target = Queue[i - 1].transform;
+                                    
+                                }
+                                
                                 Destroy(Queue[i].gameObject);
                                 Queue.RemoveAt(i);
                                 Destroy(Queue[i].gameObject);
