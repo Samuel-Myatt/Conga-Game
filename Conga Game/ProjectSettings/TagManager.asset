@@ -9,6 +9,7 @@ TagManager:
   - Pedestrian
   - GameHandler
   - Wall
+  - GameOver
   layers:
   - Default
   - TransparentFX

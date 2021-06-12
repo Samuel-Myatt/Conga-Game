@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameHandler : MonoBehaviour
     public GameObject Follower;
     public GameObject Leader;
     public List<GameObject> Queue;
+
+    public GameOverMenu GameOverMenu;
 
     float test = 0;
 
@@ -24,7 +27,7 @@ public class GameHandler : MonoBehaviour
 
     bool foundone = false;
 
-    public float score = 0;
+    public int score = 0;
 
     public bool gameover = false;
     // Start is called before the first frame update
@@ -32,7 +35,8 @@ public class GameHandler : MonoBehaviour
     {
         Queue = new List<GameObject>();
         Leader = GameObject.FindGameObjectWithTag("Leader");
-       
+        
+
         SpawnFollower(1);
         gameover = false;
     }
@@ -64,8 +68,9 @@ public class GameHandler : MonoBehaviour
     {
         if(gameover)
 		{
+            GameOverMenu.GetComponent<GameOverMenu>().setup(score);
 
-		}
+        }
         else
 		{
             test++;
@@ -269,4 +274,14 @@ public class GameHandler : MonoBehaviour
             foundone = false;
 		}
 	}
+    public void Restart()
+	{
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+
+    public void Quit()
+	{
+        Application.Quit();
+    }
 }
