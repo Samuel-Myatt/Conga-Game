@@ -150,5 +150,45 @@ public class GameHandler : MonoBehaviour
             Queue[chosen].GetComponent<Follow>().Selected();
         }
         Queue[selected].GetComponent<Follow>().Selected();
+        Check3();
     }
+
+    void Check3()
+	{
+        if(QueueCount > 3)
+		{
+            for(int i = 0; i < QueueCount-3; i++)
+			{
+                int tempcol = Queue[i].GetComponent<Follow>().Colour;
+                if(tempcol == Queue[i+1].GetComponent<Follow>().Colour)
+                {
+                    if (tempcol == Queue[i + 2].GetComponent<Follow>().Colour)
+					{
+                        //we have a match
+                        //remove the 3
+                        //move everyone past them up by 36
+                        for(int j = 0; j < QueueCount - i; j++)
+						{
+                            if(QueueCount - (i+j) >= 3)
+							{
+                                Queue[i + j].GetComponent<Follow>().Colour = Queue[i + j + 3].GetComponent<Follow>().Colour;
+                                Debug.Log("changin colours");
+                            }
+                            else
+							{
+                                // remove the queue[i+j]
+                                Destroy(Queue[i + j].gameObject);
+                                Queue.RemoveAt(i + j);
+                                Debug.Log("Deletin");
+
+                            }
+                            
+                        }
+					}
+
+                }
+
+            }
+		}
+	}
 }
