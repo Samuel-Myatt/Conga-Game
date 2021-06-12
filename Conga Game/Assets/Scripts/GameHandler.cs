@@ -10,7 +10,7 @@ public class GameHandler : MonoBehaviour
 
     public GameObject Follower;
     public GameObject Leader;
-    List<GameObject> Queue;
+    public List<GameObject> Queue;
 
     float test = 0;
 
@@ -22,16 +22,17 @@ public class GameHandler : MonoBehaviour
         Queue = new List<GameObject>();
         Leader = GameObject.FindGameObjectWithTag("Leader");
        
-        SpawnFollower();
+        SpawnFollower(1);
        
     }
     
-    public void SpawnFollower()
+    public void SpawnFollower(int Col)
 	{
         if(QueueCount == 0)
         { 
             GameObject a = (Instantiate(Follower, new Vector3(Leader.transform.position.x, Leader.transform.position.y, 0), transform.rotation) as GameObject);
             a.GetComponent<Follow>().Target = Leader.transform;
+            a.GetComponent<Follow>().Colour = Col;
             Queue.Add(a);
             QueueCount++;
         }
@@ -40,6 +41,7 @@ public class GameHandler : MonoBehaviour
 
             GameObject a = (Instantiate(Follower, new Vector3(Queue[QueueCount-1].transform.position.x, Queue[QueueCount - 1].transform.position.y, 0), transform.rotation) as GameObject);
             a.GetComponent<Follow>().Target = Queue[QueueCount - 1].transform;
+            a.GetComponent<Follow>().Colour = Col;
             Queue.Add(a);
 
             QueueCount++;

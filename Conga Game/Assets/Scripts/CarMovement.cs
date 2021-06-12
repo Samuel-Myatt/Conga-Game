@@ -9,6 +9,8 @@ public class CarMovement : MonoBehaviour
 
     float timer = 0;
 
+    int colour;
+
     private void Awake()
     {
         controller = GetComponent<CarController>();
@@ -33,9 +35,10 @@ public class CarMovement : MonoBehaviour
         {
             if(timer > 360)
 			{
+                colour = other.GetComponent<Pedestrian>().Colour;
                 Destroy(other.gameObject);
                 timer = 0;
-                GameHandler.GetComponent<GameHandler>().SpawnFollower();
+                GameHandler.GetComponent<GameHandler>().SpawnFollower(colour);
             }
             Debug.Log("cum");
         }

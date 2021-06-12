@@ -14,14 +14,40 @@ public class Follow : MonoBehaviour
 
     Rigidbody2D rb;
 
+    public float Colour = 0;
+
+    public SpriteRenderer sr;
+
+    public Sprite Blue;
+    public Sprite Yellow;
+    public Sprite Red;
+    public Sprite Green;
+
+
     void Awake()
 	{
         rb = GetComponent<Rigidbody2D>();
-       
+        sr = GetComponent<SpriteRenderer>();
+
     }
     void Start()
     {
-        
+       switch(Colour)
+		{
+            case 1:
+                //be a colour
+                sr.sprite = Blue;
+                break;
+            case 2:
+                sr.sprite = Yellow;
+                break;
+            case 3:
+                sr.sprite = Red;
+                break;
+            case 4:
+                sr.sprite = Green;
+                break;
+        }
     }
 
     // Update is called once per frame
