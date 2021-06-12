@@ -14,7 +14,7 @@ public class Follow : MonoBehaviour
 
     Rigidbody2D rb;
 
-    public float Colour = 0;
+    public int Colour = 0;
 
     public SpriteRenderer sr;
 
@@ -22,12 +22,17 @@ public class Follow : MonoBehaviour
     public Sprite Yellow;
     public Sprite Red;
     public Sprite Green;
+    public Sprite Highlight;
+
+
 
 
     void Awake()
 	{
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        //sr.color = Color.black;
+       // sr.sprite = Blue;
 
     }
     void Start()
@@ -37,7 +42,7 @@ public class Follow : MonoBehaviour
             case 1:
                 //be a colour
                 sr.sprite = Blue;
-                break;
+                break;  
             case 2:
                 sr.sprite = Yellow;
                 break;
@@ -54,11 +59,7 @@ public class Follow : MonoBehaviour
     void Update()
     {
 
-        /* Vector3 difference = target.position - transform.position;
-         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-         transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);*/
-        //transform.localEulerAngles = new Vector3(0, 0, target.localEulerAngles.z);
-        // transform.LookAt(target);
+      
             
 
         // Get Angle in Radians
@@ -73,10 +74,28 @@ public class Follow : MonoBehaviour
     }
 
 
-  
-
-    protected void LateUpdate()
+    public void Selected()
+	{
+        sr.sprite = Highlight;
+	}
+    public void UnSelected()
     {
-        //transform.localEulerAngles = new Vector3(0, 0, transform.localEulerAngles.z);
+        switch (Colour)
+        {
+            case 1:
+                //be a colour
+                sr.sprite = Blue;
+                break;
+            case 2:
+                sr.sprite = Yellow;
+                break;
+            case 3:
+                sr.sprite = Red;
+                break;
+            case 4:
+                sr.sprite = Green;
+                break;
+        }
     }
+    
 }

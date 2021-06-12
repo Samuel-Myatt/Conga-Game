@@ -7,8 +7,6 @@ public class CarMovement : MonoBehaviour
     CarController controller;
     public GameObject GameHandler;
 
-    float timer = 0;
-
     int colour;
 
     private void Awake()
@@ -20,7 +18,7 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer++;
+
         Vector2 inputVec = Vector2.zero;
 
         inputVec.x = Input.GetAxis("Horizontal");
@@ -33,13 +31,12 @@ public class CarMovement : MonoBehaviour
     {
         if (other.tag == "Pedestrian")
         {
-            if(timer > 360)
-			{
-                colour = other.GetComponent<Pedestrian>().Colour;
-                Destroy(other.gameObject);
-                timer = 0;
-                GameHandler.GetComponent<GameHandler>().SpawnFollower(colour);
-            }
+            
+            colour = other.GetComponent<Pedestrian>().Colour;
+            Destroy(other.gameObject);
+
+            GameHandler.GetComponent<GameHandler>().SpawnFollower(colour);
+
             Debug.Log("cum");
         }
     }
