@@ -39,5 +39,11 @@ public class CarMovement : MonoBehaviour
 
             Debug.Log("cum");
         }
+        else if(other.tag == "Wall")
+		{
+            Debug.Log("lose");
+        }
     }
+
+ 
 }

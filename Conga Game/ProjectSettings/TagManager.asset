@@ -8,6 +8,7 @@ TagManager:
   - Follower
   - Pedestrian
   - GameHandler
+  - Wall
   layers:
   - Default
   - TransparentFX
