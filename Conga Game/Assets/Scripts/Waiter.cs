@@ -5,7 +5,7 @@ using UnityEngine;
 /// </summary>
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(BoxCollider2D))]
+//[RequireComponent(typeof(BoxCollider2D))]
 public class Waiter : MonoBehaviour
 {
     /// <summary>
@@ -24,13 +24,13 @@ public class Waiter : MonoBehaviour
     /// The minimum size that can be assigned to the asteroid.
     /// </summary>
     [Tooltip("The minimum size that can be assigned to the asteroid.")]
-    public float minSize = 0.35f;
+    public float minSize = 1f;
 
     /// <summary>
     /// The maximum size that can be assigned to the asteroid.
     /// </summary>
     [Tooltip("The maximum size that can be assigned to the asteroid.")]
-    public float maxSize = 1.65f;
+    public float maxSize = 1f;
 
     /// <summary>
     /// How quickly the asteroid moves along its trajectory.
@@ -64,6 +64,8 @@ public class Waiter : MonoBehaviour
 
     private void Start()
     {
+
+        
         // Assign a random sprite to the asteroid
         _spriteRenderer.sprite = this.sprites[Random.Range(0, this.sprites.Length)];
 
@@ -71,8 +73,8 @@ public class Waiter : MonoBehaviour
         this.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.value * 360.0f);
 
         // Set the scale and mass of the asteroid based on the assigned size
-        this.transform.localScale = Vector3.one * this.size;
-        _rigidbody.mass = this.size;
+         //this.transform.localScale = Vector3.one * this.size;
+       // _rigidbody.mass = this.size;
 
         // Destroy the asteroid after it reaches its max lifetime
         Destroy(this.gameObject, this.maxLifetime);
@@ -85,7 +87,13 @@ public class Waiter : MonoBehaviour
     }
 
 
+    public void Update()
+	{
 
+        var pos = transform.position;
+        pos.z = 0;
+        transform.position = pos;
+    }
 
 
 }

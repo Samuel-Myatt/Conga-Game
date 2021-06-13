@@ -10,6 +10,7 @@ TagManager:
   - GameHandler
   - Wall
   - GameOver
+  - Shake
   layers:
   - Default
   - TransparentFX

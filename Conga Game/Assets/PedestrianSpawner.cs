@@ -1,15 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Continuously spawns asteroids and sets their initial trajectory.
-/// </summary>
-public class WaiterSpawner : MonoBehaviour
+public class PedestrianSpawner : MonoBehaviour
 {
-    /// <summary>
+    //// <summary>
     /// The object that is cloned when spawning an asteroid.
     /// </summary>
     [Tooltip("The object that is cloned when spawning an asteroid.")]
-    public Waiter WaiterPrefab;
+    public Pedestrian PedestrianPrefab;
 
     /// <summary>
     /// The distance the asteroids spawn from the spawner.
@@ -63,14 +62,12 @@ public class WaiterSpawner : MonoBehaviour
 
             // Create the new asteroid by cloning the prefab and set a random
             // size within the range
-            Waiter waiter = Instantiate(this.WaiterPrefab, spawnPoint, rotation);
+            Pedestrian pedestrian = Instantiate(this.PedestrianPrefab, spawnPoint, rotation);
             //waiter.size = Random.Range(waiter.minSize, waiter.maxSize);
 
             // The asteroid will float towards the spawner location
             Vector2 trajectory = rotation * -spawnDirection;
-            waiter.SetTrajectory(trajectory);
+            pedestrian.SetTrajectory(trajectory);
         }
     }
-
 }
-

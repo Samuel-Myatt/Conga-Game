@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
@@ -32,9 +33,14 @@ public class GameHandler : MonoBehaviour
     public bool gameover = false;
 
     public ParticleSystem ParticleSystem;
+
+    private Shake shake;
+
+    public Text pointsText;
     // Start is called before the first frame update
     void Start()
     {
+        shake = GameObject.FindGameObjectWithTag("Shake").GetComponent<Shake>();
         Queue = new List<GameObject>();
         Leader = GameObject.FindGameObjectWithTag("Leader");
         
@@ -68,7 +74,8 @@ public class GameHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameover)
+        pointsText.text = "POINTS: " + score.ToString();
+        if (gameover)
 		{
             GameOverMenu.GetComponent<GameOverMenu>().setup(score);
 
@@ -224,6 +231,7 @@ public class GameHandler : MonoBehaviour
                                 QueueCount -= 3;
                                 score += 100;
                                 ParticleSystem.Play();
+                                shake.CamShake();
                             }
                             else
                             {
@@ -248,6 +256,7 @@ public class GameHandler : MonoBehaviour
                                 QueueCount -= 3;
                                 score += 100;
                                 ParticleSystem.Play();
+                                shake.CamShake();
                             }
 
                             /*for(int j = 0; j < QueueCount - i; j++)
