@@ -11,6 +11,6 @@ public class GameOverMenu : MonoBehaviour
     public void setup(int points)
 	{
         gameObject.SetActive(true);
-        pointsText.text = "Points: " + points.ToString();
+        pointsText.text = "POINTS: " + points.ToString();
 	}
 }

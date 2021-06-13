@@ -30,6 +30,8 @@ public class GameHandler : MonoBehaviour
     public int score = 0;
 
     public bool gameover = false;
+
+    public ParticleSystem ParticleSystem;
     // Start is called before the first frame update
     void Start()
     {
@@ -221,6 +223,7 @@ public class GameHandler : MonoBehaviour
                                 Queue.RemoveAt(i);
                                 QueueCount -= 3;
                                 score += 100;
+                                ParticleSystem.Play();
                             }
                             else
                             {
@@ -244,7 +247,7 @@ public class GameHandler : MonoBehaviour
                                 Queue.RemoveAt(i);
                                 QueueCount -= 3;
                                 score += 100;
-
+                                ParticleSystem.Play();
                             }
 
                             /*for(int j = 0; j < QueueCount - i; j++)
