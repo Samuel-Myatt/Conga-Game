@@ -96,11 +96,13 @@ public class GameHandler : MonoBehaviour
                 {
                     Queue[selected].GetComponent<Follow>().UnSelected();
                     selected = 0;
+                    SoundManager.PlaySound("Select");
                 }
                 else
                 {
                     Queue[selected].GetComponent<Follow>().UnSelected();
                     selected++;
+                    SoundManager.PlaySound("Select");
                 }
 
             }
