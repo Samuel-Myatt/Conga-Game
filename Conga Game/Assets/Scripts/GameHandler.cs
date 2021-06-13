@@ -110,11 +110,13 @@ public class GameHandler : MonoBehaviour
                 {
                     Queue[selected].GetComponent<Follow>().UnSelected();
                     selected = QueueCount - 1;
+                    SoundManager.PlaySound("Select");
                 }
                 else
                 {
                     Queue[selected].GetComponent<Follow>().UnSelected();
                     selected--;
+                    SoundManager.PlaySound("Select");
                 }
             }
 
@@ -177,6 +179,8 @@ public class GameHandler : MonoBehaviour
                 {
                     chosen = selected;
                     beenChosen = true;
+                    SoundManager.PlaySound("Choose");
+                                
                 }
 
             }
@@ -192,7 +196,7 @@ public class GameHandler : MonoBehaviour
 
     void Check3()
 	{
-        if(QueueCount > 3)
+        if(QueueCount >= 3)
 		{
             for(int i = 0; i < QueueCount-2; i++)
 			{
@@ -211,7 +215,7 @@ public class GameHandler : MonoBehaviour
                             if (i == 0)
                             {
                                 Debug.Log("Hit the win");
-                                if ((QueueCount - i) < 3)
+                                if ((QueueCount - i) <= 3)
                                 {
                                     Debug.Log("Yeet");
                                 }
@@ -232,6 +236,11 @@ public class GameHandler : MonoBehaviour
                                 score += 100;
                                 ParticleSystem.Play();
                                 shake.CamShake();
+                                SoundManager.PlaySound("Woo");
+                                SoundManager.PlaySound("Points");
+                                SoundManager.PlaySound("PartyPopper");
+                                selected = 0;
+                                //SoundManager.PlaySound("PartyHorn");
                             }
                             else
                             {
@@ -257,6 +266,11 @@ public class GameHandler : MonoBehaviour
                                 score += 100;
                                 ParticleSystem.Play();
                                 shake.CamShake();
+                                SoundManager.PlaySound("Woo");
+                                SoundManager.PlaySound("Points");
+                                SoundManager.PlaySound("PartyPopper");
+                                selected = 0;
+                                //SoundManager.PlaySound("PartyHorn");
                             }
 
                             /*for(int j = 0; j < QueueCount - i; j++)

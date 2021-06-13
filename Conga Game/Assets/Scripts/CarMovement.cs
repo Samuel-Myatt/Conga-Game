@@ -6,6 +6,7 @@ public class CarMovement : MonoBehaviour
 {
     CarController controller;
     public GameObject GameHandler;
+    public AudioSource music;
 
     int colour;
 
@@ -41,10 +42,14 @@ public class CarMovement : MonoBehaviour
             GameHandler.GetComponent<GameHandler>().SpawnFollower(colour);
 
             Debug.Log("cum");
+            SoundManager.PlaySound("ObtainPerson");
         }
         else if(other.tag == "Wall")
 		{
             Debug.Log("lose");
+            music.volume = 0f;
+            //SoundManager.PlaySound("Record");
+            SoundManager.PlaySound("Aww");
             GameHandler.GetComponent<GameHandler>().gameover = true;
         }
     }
