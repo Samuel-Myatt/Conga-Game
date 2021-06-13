@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4879858700432347714}
   - component: {fileID: 6213457311167498912}
   - component: {fileID: 5205790714513578940}
+  - component: {fileID: 7971203889933445462}
   m_Layer: 0
   m_Name: Waiter
   m_TagString: Wall
@@ -158,3 +159,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.11
+--- !u!95 &7971203889933445462
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562670596825327593}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9930ca1a87c97514187bea96ce9dfb0c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

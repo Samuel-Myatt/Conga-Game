@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -5774643658953518456}
   - component: {fileID: 4151385590088735388}
   - component: {fileID: -1526716268297641394}
+  - component: {fileID: 3630745109921508449}
   m_Layer: 0
   m_Name: Pedestrian
   m_TagString: Pedestrian
@@ -108,6 +109,7 @@ MonoBehaviour:
   maxSize: 1
   movementSpeed: 50
   maxLifetime: 30
+  anim: {fileID: 3630745109921508449}
   Colour: 0
 --- !u!58 &4151385590088735388
 CircleCollider2D:
@@ -146,3 +148,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &3630745109921508449
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8225689996226775614}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c622fdd9a451eec40b1db7d85841be11, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

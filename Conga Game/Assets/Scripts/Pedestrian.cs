@@ -57,6 +57,7 @@ public class Pedestrian : MonoBehaviour
     /// </summary>
     private Rigidbody2D _rigidbody;
 
+    public Animator anim;
 
     public int Colour = 0;
 
@@ -76,15 +77,19 @@ public class Pedestrian : MonoBehaviour
             case 1:
                 //be a colour
                 sr.sprite = Blue;
+                anim.Play("BlueWalk");
                 break;
             case 2:
                 sr.sprite = Yellow;
+                anim.Play("YellowWalk");
                 break;
             case 3:
                 sr.sprite = Red;
+                anim.Play("RedWalk");
                 break;
             case 4:
                 sr.sprite = Green;
+                anim.Play("GreenWalk");
                 break;
         }
         this.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.value * 360.0f);
